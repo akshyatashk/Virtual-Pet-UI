@@ -1,32 +1,59 @@
-let petName = "My Virtual Pet";
-let mood = "happy";
+const feedBtn = document.getElementById('feedBtn');
+const playBtn = document.getElementById('playBtn');
+const renameBtn = document.getElementById('renameBtn');
+const statusMessage = document.getElementById('statusMessage');
+const hungerValue = document.getElementById('hungerValue');
+const happinessValue = document.getElementById('happinessValue');
 
-const petImage = document.getElementById("pet-img");
-const sound = new Audio("https://www.fesliyanstudios.com/play-mp3/387");
+let petName = "Pet";
+let hunger = 50;    // 0 = full, 100 = starving
+let happiness = 50; // 0 = sad, 100 = happy
 
-function updateStatus(message) {
-  document.getElementById("status").textContent = message;
-}
+function updateStats() {
+  hungerValue.textContent = hunger;
+  happinessValue.textContent = happiness;
 
-function feedPet() {
-  mood = "full";
-  petImage.src = "https://i.imgur.com/qY8hG2g.png"; // full/happy pet
-  updateStatus("You fed your pet. It's feeling full!");
-  sound.play();
-}
-
-function playWithPet() {
-  mood = "excited";
-  petImage.src = "https://i.imgur.com/fvKxozS.png"; // excited pet
-  updateStatus("You played with your pet. It's excited!");
-  sound.play();
-}
-
-function renamePet() {
-  const newName = prompt("What would you like to name your pet?");
-  if (newName) {
-    petName = newName;
-    document.getElementById("pet-name").textContent = petName;
-    updateStatus(`${petName} is happy to have a new name!`);
+  if (hunger > 80) {
+    statusMessage.textContent = `${petName} is very hungry! Feed it soon!`;
+  } else if (happiness < 30) {
+    statusMessage.textContent = `${petName} is feeling sad. Play with it!`;
+  } else {
+    statusMessage.textContent = `${petName} is feeling good!`;
   }
 }
+
+feedBtn.addEventListener('click', () => {
+  hunger -= 20;
+  if (hunger < 0) hunger = 0;
+  statusMessage.textContent = `${petName} is happily eating!`;
+  updateStats();
+});
+
+playBtn.addEventListener('click', () => {
+  happiness += 20;
+  if (happiness > 100) happiness = 100;
+  statusMessage.textContent = `${petName} is playing joyfully!`;
+  updateStats();
+});
+
+renameBtn.addEventListener('click', () => {
+  const newName = prompt("Enter a new name for your pet:");
+  if (newName && newName.trim() !== "") {
+    petName = newName.trim();
+    statusMessage.textContent = `Your pet's new name is ${petName}!`;
+  }
+  updateStats();
+});
+
+// Gradual decay over time
+setInterval(() => {
+  hunger += 5;
+  if (hunger > 100) hunger = 100;
+
+  happiness -= 5;
+  if (happiness < 0) happiness = 0;
+
+  updateStats();
+}, 10000); // every 10 seconds
+
+updateStats();
