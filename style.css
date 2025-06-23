@@ -1,0 +1,37 @@
+body {
+  background: #f0f0f0;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 40px;
+}
+
+.container {
+  background: white;
+  padding: 20px;
+  max-width: 400px;
+  margin: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.pet-image {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  margin: 20px 0;
+}
+
+.buttons button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  margin: 0 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.buttons button:hover {
+  background-color: #45a049;
+}
