@@ -4,19 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Pixel Pet Portal</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="wrapper">
-    <h1 class="title">🕹️ Pixel Pet Portal</h1>
+    <h1 class="title">🐾 Pixel Pet Portal</h1>
 
     <div class="pet-card">
-      <h2 id="pet-name">🐱 CatByte</h2>
-      <img id="pet-img" src="https://m.media-amazon.com/images/I/71H6pf8BSeL._UF1000,1000_QL80_.jpg />
-
-
-
+      <h2 id="pet-name"> PuppyByte</h2>
+     <img id="pet-img" src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Cute Pixel Cat" />
       <div class="stats">
         <div class="stat">
           <label>Hunger</label>
@@ -28,16 +25,16 @@
         </div>
       </div>
 
-      <p id="mood">Mood: Happy 😺</p>
+      <p id="mood">Mood: 🧘‍♂️ Centered</p>
     </div>
 
     <div class="buttons">
-      <button onclick="feedPet()">🍗 Feed</button>
-      <button onclick="playWithPet()">🎮 Play</button>
-      <button onclick="renamePet()">✏️ Rename</button>
+      <button id="feedBtn">🍖 Feed</button>
+      <button id="playBtn">🎾 Play</button>
+      <button id="renameBtn">✏️ Rename</button>
     </div>
 
-    <p id="status">Your pet is ready to play!</p>
+    <p id="statusMessage">Welcome to your command console.</p>
   </div>
 
   <script src="script.js"></script>
