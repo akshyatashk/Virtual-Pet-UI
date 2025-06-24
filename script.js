@@ -1,59 +1,57 @@
-const feedBtn = document.getElementById('feedBtn');
-const playBtn = document.getElementById('playBtn');
-const renameBtn = document.getElementById('renameBtn');
-const statusMessage = document.getElementById('statusMessage');
-const hungerValue = document.getElementById('hungerValue');
-const happinessValue = document.getElementById('happinessValue');
+let petName = "CatByte";
+let hunger = 100;
+let happiness = 100;
 
-let petName = "Pet";
-let hunger = 50;    // 0 = full, 100 = starving
-let happiness = 50; // 0 = sad, 100 = happy
+const hungerBar = document.getElementById("hunger-bar");
+const happinessBar = document.getElementById("happiness-bar");
+const moodText = document.getElementById("mood");
+const statusText = document.getElementById("status");
+const petImg = document.getElementById("pet-img");
+const petNameDisplay = document.getElementById("pet-name");
 
 function updateStats() {
-  hungerValue.textContent = hunger;
-  happinessValue.textContent = happiness;
+  hungerBar.value = hunger;
+  happinessBar.value = happiness;
 
-  if (hunger > 80) {
-    statusMessage.textContent = `${petName} is very hungry! Feed it soon!`;
+  if (hunger < 30) {
+    moodText.textContent = "Mood: Hungry 😿";
   } else if (happiness < 30) {
-    statusMessage.textContent = `${petName} is feeling sad. Play with it!`;
+    moodText.textContent = "Mood: Bored 😐";
   } else {
-    statusMessage.textContent = `${petName} is feeling good!`;
+    moodText.textContent = "Mood: Happy 😺";
   }
 }
 
-feedBtn.addEventListener('click', () => {
-  hunger -= 20;
-  if (hunger < 0) hunger = 0;
-  statusMessage.textContent = `${petName} is happily eating!`;
+function feedPet() {
+  hunger = Math.min(hunger + 30, 100);
+  petImg.classList.add("animate");
+  statusText.textContent = `${petName} is munching happily 🍖`;
+  setTimeout(() => petImg.classList.remove("animate"), 300);
   updateStats();
-});
+}
 
-playBtn.addEventListener('click', () => {
-  happiness += 20;
-  if (happiness > 100) happiness = 100;
-  statusMessage.textContent = `${petName} is playing joyfully!`;
+function playWithPet() {
+  happiness = Math.min(happiness + 30, 100);
+  hunger = Math.max(hunger - 10, 0);
+  petImg.classList.add("animate");
+  statusText.textContent = `${petName} is playing joyfully 🎮`;
+  setTimeout(() => petImg.classList.remove("animate"), 300);
   updateStats();
-});
+}
 
-renameBtn.addEventListener('click', () => {
-  const newName = prompt("Enter a new name for your pet:");
-  if (newName && newName.trim() !== "") {
-    petName = newName.trim();
-    statusMessage.textContent = `Your pet's new name is ${petName}!`;
+function renamePet() {
+  const newName = prompt("What would you like to name your pet?");
+  if (newName) {
+    petName = newName;
+    petNameDisplay.textContent = `🐱 ${petName}`;
+    statusText.textContent = `${petName} feels proud with a new name! ✨`;
   }
-  updateStats();
-});
+}
 
-// Gradual decay over time
 setInterval(() => {
-  hunger += 5;
-  if (hunger > 100) hunger = 100;
-
-  happiness -= 5;
-  if (happiness < 0) happiness = 0;
-
+  hunger = Math.max(hunger - 1, 0);
+  happiness = Math.max(happiness - 1, 0);
   updateStats();
-}, 10000); // every 10 seconds
+}, 3000);
 
 updateStats();
