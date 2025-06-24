@@ -5,37 +5,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Pixel Pet Portal</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <div class="wrapper">
-    <h1 class="title">🐾 Pixel Pet Portal</h1>
+  <main class="wrapper">
+    <header>
+      <h1 class="title">🐾 Pixel Pet Console</h1>
+    </header>
 
-    <div class="pet-card">
-      <h2 id="pet-name"> PuppyByte</h2>
-     <img id="pet-img" src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Cute Pixel Cat" />
+    <section class="pet-status">
+      <h2 id="pet-name">🐱 Nyabyte</h2>
+      <img
+        id="pet-img"
+        src="https://cdn-icons-png.flaticon.com/512/616/616408.png"
+        alt="Cute Cat"
+      />
+
       <div class="stats">
         <div class="stat">
-          <label>Hunger</label>
+          <label for="hunger-bar">Hunger</label>
           <progress id="hunger-bar" value="100" max="100"></progress>
         </div>
         <div class="stat">
-          <label>Happiness</label>
+          <label for="happiness-bar">Happiness</label>
           <progress id="happiness-bar" value="100" max="100"></progress>
         </div>
       </div>
 
-      <p id="mood">Mood: 🧘‍♂️ Centered</p>
-    </div>
+      <p id="mood">Mood: 🧘‍♀️ Balanced</p>
+    </section>
 
-    <div class="buttons">
-      <button id="feedBtn">🍖 Feed</button>
-      <button id="playBtn">🎾 Play</button>
-      <button id="renameBtn">✏️ Rename</button>
-    </div>
+    <section class="controls">
+      <button id="feedBtn" type="button">🍣 Feed</button>
+      <button id="playBtn" type="button">🧶 Play</button>
+      <button id="renameBtn" type="button">🔤 Rename</button>
+    </section>
 
-    <p id="statusMessage">Welcome to your command console.</p>
-  </div>
+    <footer>
+      <p id="statusMessage">Console online. Awaiting command.</p>
+    </footer>
+  </main>
 
   <script src="script.js"></script>
 </body>
