@@ -24,13 +24,28 @@ body {
 }
 
 .wrapper {
-  background-color: var(--bg);
-  padding: 2rem;
-  border-radius: 20px;
-  max-width: 420px;
-  width: 100%;
-  text-align: center;
-  box-shadow: 0 0 25px rgba(0, 255, 255, 0.2);
+  @media (min-width: 1024px) {
+  body {
+    padding: 4rem;
+  }
+
+  .title {
+    font-size: 1rem;
+  }
+
+  #pet-img {
+    width: 140px;
+  }
+
+  button {
+    font-size: 0.7rem;
+    padding: 0.8rem 1.2rem;
+  }
+
+  #statusMessage {
+    font-size: 0.75rem;
+  }
+}
 }
 
 .title {
